@@ -7,7 +7,7 @@ namespace Platzi.Ecom.Core.Products
     {
         public int Id { get; private set; }
 
-        public Categoria Categoria { get; set; }
+        public Category Category { get; set; }
 
         public decimal Value { get; set; }
 

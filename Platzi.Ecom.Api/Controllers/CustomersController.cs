@@ -24,11 +24,22 @@ namespace Platzi.Ecom.Api.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            this.customerService.RegisterCustomer(new Customer());
+            var results = customerRepository.GetAll();
 
-            var result = this.customerRepository.GetAll();
+            return Ok(results);
+        }
 
-            return Ok(result);
+        [HttpPost]
+        public ActionResult Post([FromBody]Customer customer)
+        {
+            if (customer == null)
+            {
+                return BadRequest();
+            }
+
+            customerService.RegisterCustomer(customer);
+
+            return Ok(customer);
         }
     }
 }
