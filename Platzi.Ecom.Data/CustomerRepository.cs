@@ -1,5 +1,5 @@
 ﻿using Platzi.Ecom.Core.Common;
-using Platzi.Ecom.Core.Customer;
+using Platzi.Ecom.Core.Customers;
 using System;
 using System.Collections.Generic;
 using System.Text;

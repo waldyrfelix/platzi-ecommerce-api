@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platzi.Ecom.Api", "Platzi.Ecom.Api\Platzi.Ecom.Api.csproj", "{553E6B2D-F21C-44DE-A268-FAF2A7031572}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platzi.Ecom.Api", "Platzi.Ecom.Api\Platzi.Ecom.Api.csproj", "{553E6B2D-F21C-44DE-A268-FAF2A7031572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platzi.Ecom.Core", "Platzi.Ecom.Core\Platzi.Ecom.Core.csproj", "{6ECB88D5-F731-4F99-84E3-56CAE68DA406}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platzi.Ecom.Core", "Platzi.Ecom.Core\Platzi.Ecom.Core.csproj", "{6ECB88D5-F731-4F99-84E3-56CAE68DA406}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platzi.Ecom.Data", "Platzi.Ecom.Data\Platzi.Ecom.Data.csproj", "{9113BD7E-FB13-4266-B746-798F7A10069A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platzi.Ecom.Data", "Platzi.Ecom.Data\Platzi.Ecom.Data.csproj", "{9113BD7E-FB13-4266-B746-798F7A10069A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{506BC1F1-A1F6-4421-B0FF-AD9078272FE2}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

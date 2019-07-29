@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Platzi.Ecom.Core.Customer;
+using Platzi.Ecom.Core.Customers;
 
 namespace Platzi.Ecom.Api.Controllers
 {

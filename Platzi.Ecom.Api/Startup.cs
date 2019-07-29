@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Platzi.Ecom.Core.Common;
-using Platzi.Ecom.Core.Customer;
+using Platzi.Ecom.Core.Customers;
 using Platzi.Ecom.Data;
 
 namespace Platzi.Ecom.Api
