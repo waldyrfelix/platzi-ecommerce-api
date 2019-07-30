@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Platzi.Ecom.Core.Common;
 using Platzi.Ecom.Core.Customers;
+using Platzi.Ecom.Core.Orders;
 using Platzi.Ecom.Data;
 using Platzi.Ecom.Data.EF;
 
@@ -31,6 +32,8 @@ namespace Platzi.Ecom.Api
             services.Add(new ServiceDescriptor(typeof(IRepositoryBase<>), typeof(RepositoryBase<>), ServiceLifetime.Scoped));    // Scoped
             services.AddScoped<DbContext, PlatziDbContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

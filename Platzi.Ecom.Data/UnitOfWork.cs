@@ -15,6 +15,11 @@ namespace Platzi.Ecom.Data
             this.dbContext = dbContext;
         }
 
+        public void Dispose()
+        {
+            EndTransaction();
+        }
+
         public void EndTransaction()
         {
             this.dbContext.SaveChanges();

@@ -2,6 +2,7 @@
 using Platzi.Ecom.Core.Customers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Platzi.Ecom.Core.Orders
 {
@@ -11,21 +12,29 @@ namespace Platzi.Ecom.Core.Orders
         {
             Items = new List<OrderItem>();
             OrderStatus = OrderStatus.Placed;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
         }
 
         #region Methods
-        public void ChangePaymentToPending()
-        {
-            if (OrderStatus != OrderStatus.Placed && OrderStatus != OrderStatus.PaymentRejected)
-                throw new InconsistentOrderStatusException($"O status {OrderStatus.PaymentPending} é inválido para o status atual do pedido. ({OrderStatus}).");
 
-            OrderStatus = OrderStatus.PaymentPending;
+        public void CalculateTotalValue()
+        {
+            TotalValue = Items.Sum(i => i.Value);
         }
 
         public void AssociateCustomer(Customer customer)
         {
             this.Customer = customer;
             this.DeliveryAddress = customer.Address;
+        }
+
+        public void ChangePaymentToPending()
+        {
+            if (OrderStatus != OrderStatus.Placed && OrderStatus != OrderStatus.PaymentRejected)
+                throw new InconsistentOrderStatusException($"O status {OrderStatus.PaymentPending} é inválido para o status atual do pedido. ({OrderStatus}).");
+
+            OrderStatus = OrderStatus.PaymentPending;
         }
 
         public void ChangePaymentToApproved()
@@ -43,6 +52,7 @@ namespace Platzi.Ecom.Core.Orders
 
             OrderStatus = OrderStatus.Invoiced;
         }
+        
         #endregion
 
         public int Id { get; private set; }

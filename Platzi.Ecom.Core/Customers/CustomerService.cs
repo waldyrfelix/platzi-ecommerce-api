@@ -1,8 +1,5 @@
 ﻿using Platzi.Ecom.Core.Common;
-using Platzi.Ecom.Core.Customers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Platzi.Ecom.Core.Customers
 {
@@ -29,9 +26,10 @@ namespace Platzi.Ecom.Core.Customers
                 throw new CustomerAlreadyExistsException(customer.Name);
             }
 
-            unitOfWork.InitTransaction();
-            repository.Insert(customer);
-            unitOfWork.EndTransaction();
+            using (unitOfWork)
+            {
+                repository.Insert(customer);
+            }
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Platzi.Ecom.Core.Common
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         void InitTransaction();
 

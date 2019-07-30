@@ -9,19 +9,23 @@ namespace Platzi.Ecom.Core.Orders
     public class OrderService : IOrderService
     {
         private readonly IRepositoryBase<Product> productRepository;
+        private readonly IRepositoryBase<Order> orderRepository;
+        private readonly IUnitOfWork unitOfWork;
+        private readonly ICustomerRepository customerRepository;
 
-        public OrderService(IRepositoryBase<Product> productRepository)
+        public OrderService(ICustomerRepository customerRepository, 
+            IRepositoryBase<Product> productRepository,
+            IRepositoryBase<Order> orderRepository,
+            IUnitOfWork unitOfWork)
         {
             this.productRepository = productRepository;
+            this.orderRepository = orderRepository;
+            this.unitOfWork = unitOfWork;
+            this.customerRepository = customerRepository;
         }
 
-        public Order PlaceOrder(Customer customer, ICollection<int> productIds)
+        public Order PlaceOrder(int customerId, ICollection<int> productIds)
         {
-            if (customer == null)
-            {
-                throw new ArgumentNullException(nameof(customer));
-            }
-
             if (productIds == null)
             {
                 throw new ArgumentNullException(nameof(productIds));
@@ -32,9 +36,9 @@ namespace Platzi.Ecom.Core.Orders
                 throw new InvalidOperationException("Não é permitido fechar um pedido sem produtos associados.");
             }
 
-            var order = new Order();
-            order.AssociateCustomer(customer);
+            var customer = customerRepository.GetById(customerId);
 
+            var order = new Order();
             foreach (var id in productIds)
             {
                 var existingProduct = productRepository.GetById(id);
@@ -43,6 +47,14 @@ namespace Platzi.Ecom.Core.Orders
                 orderItem.CopyFromProduct(existingProduct);
 
                 order.Items.Add(orderItem);
+            }
+
+            order.AssociateCustomer(customer);
+            order.CalculateTotalValue();
+
+            using (unitOfWork)
+            {
+                orderRepository.Insert(order);
             }
 
             return order;
