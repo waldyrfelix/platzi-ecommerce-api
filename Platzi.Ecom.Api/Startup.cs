@@ -34,6 +34,10 @@ namespace Platzi.Ecom.Api
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+
+            services.AddDbContext<PlatziDbContext>(
+                opt => opt.UseSqlServer(Configuration.GetConnectionString("PlatziDbContext"))
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
