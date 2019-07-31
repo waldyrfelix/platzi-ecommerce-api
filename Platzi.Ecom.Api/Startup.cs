@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Platzi.Ecom.Core.Common;
 using Platzi.Ecom.Core.Customers;
 using Platzi.Ecom.Core.Orders;
+using Platzi.Ecom.Core.Products;
 using Platzi.Ecom.Data;
 using Platzi.Ecom.Data.EF;
 
@@ -34,6 +35,7 @@ namespace Platzi.Ecom.Api
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IProductService, ProductService>();
 
             services.AddDbContext<PlatziDbContext>(
                 opt => opt.UseSqlServer(Configuration.GetConnectionString("PlatziDbContext"))

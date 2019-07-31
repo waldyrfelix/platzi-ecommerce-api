@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Platzi.Ecom.Data.EF;
 
 namespace Platzi.Ecom.Data.Migrations
 {
     [DbContext(typeof(PlatziDbContext))]
-    partial class PlatziDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190730222919_AddedProductsSKU")]
+    partial class AddedProductsSKU
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

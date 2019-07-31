@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Platzi.Ecom.Core.Customers;
+using System.Linq;
 
 namespace Platzi.Ecom.Data
 {
@@ -9,7 +10,9 @@ namespace Platzi.Ecom.Data
 
         public Customer GetByCPF(string cpf)
         {
-            return null;
+            return dbContext.Set<Customer>()
+                .Where(x => x.CPF == cpf && x.Deleted == false)
+                .FirstOrDefault();
         }
     }
 }

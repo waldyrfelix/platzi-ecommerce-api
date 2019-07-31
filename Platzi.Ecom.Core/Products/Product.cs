@@ -9,6 +9,8 @@ namespace Platzi.Ecom.Core.Products
 
         public Category Category { get; set; }
 
+        public string Sku { get; set; }
+
         public decimal Value { get; set; }
 
         public string Description { get; set; }

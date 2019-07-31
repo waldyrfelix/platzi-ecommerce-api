@@ -16,9 +16,5 @@ namespace Platzi.Ecom.Core.Customers
         public string CPF { get; private set; }
 
         public bool Deleted { get; private set; }
-
-        public DateTime CreatedAt { get; private set; }
-
-        public DateTime UpdatedAt { get; private set; }
     }
 }
